@@ -67,6 +67,8 @@
 
             load_sudoku_board();
 
+            draw_bold_lines();
+            
             var startX = 20;
             var startY = 20;
 
@@ -88,16 +90,31 @@
                 ctx.stroke();
             }
 
+            function draw_bold_lines()
+            {
+                ctx.beginPath();       // Start a new path
+                ctx.moveTo(30, 50);    // Move the pen to (30, 50)
+                ctx.lineTo(170, 470);
+            }
+
+
+
             function load_sudoku_values(values_array)
             {
                 for (var i = 0; i < 9; i++)
                 {
-                    ctx.strokeText( values_array[num] , startX+10 ,startY - 10 + 50)
+                    if (values_array[num] != 0)
+                    {
+                        ctx.strokeText( values_array[num] , startX+10 ,startY - 10 + 50)
+                    }
                     num = num + 1
                     for (var j = 0; j < 8; j++)
                     {
                         startX = startX + 50
-                        ctx.strokeText( values_array[num] , startX+10 ,startY - 10 + 50)     
+                        if (values_array[num] != 0)
+                        {
+                            ctx.strokeText( values_array[num] , startX+10 ,startY - 10 + 50) 
+                        }    
                         num = num + 1
                     }
                     startX = 20

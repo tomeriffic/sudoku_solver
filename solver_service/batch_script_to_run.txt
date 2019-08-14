@@ -17,14 +17,35 @@ docker rm solver_service
 docker rmi solver_service
 ###################
 
+
+
+
+
+
 #######################
-#From repository
+#From repository To Run Solver Service
 docker build -t tpilvelis/solver_service:v0.0.1 .
 docker run --name solver_service -d -p 80:5000 tpilvelis/solver_service:v0.0.1
 docker stop solver_service
 docker rm solver_service
 docker rmi tpilvelis/solver_service:v0.0.1
 #######################
+#######################
+#From repository To Run Web Server
+docker build -t tpilvelis/web-server:v0.0.1 .
+docker run --name web-service -d -p 80:80 tpilvelis/web-server:v0.0.1
+docker stop web-service
+docker rm web-server
+docker rmi tpilvelis/web-server:v0.0.1
+#######################
+
+
+
+
+
+
+
+
 
 #######
 #Do Load balancing
