@@ -1,11 +1,112 @@
 <html>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    
     <head>
-        <title>Title Here</title>
+        <title>Sudoku Solver</title>
     </head>
 
     <body>
-        <h1>Home Page</h1>
+
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-">
+                            <!--Side Content-->
+                        </div>
+                        <div class="col-sm">
+                            <h1>Sudoku Soler</h1>
+                            <div class="card text-center">
+                                <div class="card-header">
+                                    Puzzle Hash Code:
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Special title treatment</h5>
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                        
+                                    <canvas id="sudokuTable" width="490" height="490" style="border:1px solid #d3d3d3;">
+                                            Your browser does not support the HTML5 canvas tag.</canvas>
+                                        
+                                        
+                                </div>
+                                <div class="card-footer text-muted">
+                                    <a href="#" class="btn btn-primary">Solve</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-">
+                            <!--Side Content-->
+                        </div>
+                    </div>
+                </div>
+
     </body>
+
+    <script>
+        var sudoku_values = [0,0,7,0,0,0,0,0,5,
+                            0,0,0,0,0,2,0,8,3,
+                            0,0,0,7,6,0,2,1,0,
+                            0,6,4,0,9,0,0,2,1, 
+                            0,0,1,8,2,3,4,0,0, 
+                            2,5,0,0,1,0,8,9,0, 
+                            0,8,2,0,7,1,0,0,0, 
+                            3,7,0,2,0,0,0,0,0, 
+                            1,0,0,0,0,0,6,0,0 ] 
+            var c = document.getElementById("sudokuTable");
+            var ctx = c.getContext("2d");
+            ctx.font = 'bold 48px serif';
+            var startX, startY = 20;
+            var num = 0;
+
+            load_sudoku_board();
+
+            startX, startY = 20;
+
+            load_sudoku_values();
+
+
+            function load_sudoku_board()
+            {
+                for (var i = 0; i < 9; i++)
+                {
+                    ctx.rect(startX, startY, 50, 50)
+                    for (var j = 0; j < 9; j++)
+                    {
+                        ctx.rect(startX, startY, 50, 50)
+                        startX = startX + 50
+                    }
+                    startX = 20
+                    startY = startY + 50
+                }
+                ctx.stroke();
+            }
+
+            function load_sudoku_values()
+            {
+                for (var i = 0; i < 9; i++)
+                {
+                    ctx.strokeText( sudoku_values[num] , startX+10 ,startY - 10 + 50)
+                    num = num + 1
+
+                    for (var j = 0; j < 8; j++)
+                    {
+                        startX = startX + 50
+                        ctx.strokeText( sudoku_values[num] , startX+10 ,startY - 10 + 50)
+                        
+                        num = num + 1
+
+                        //ctx.addHitRegion()
+                    }
+                    startX = 20
+                    startY = startY + 50
+
+                }
+                
+                ctx.stroke();
+            }
+
+            </script> 
 
 </html>
