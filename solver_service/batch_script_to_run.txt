@@ -1,0 +1,63 @@
+
+##################
+#Locaclly
+#To Create Image from Dockerfile
+docker build -t solver_service .
+
+#To Create and run container from the image
+docker run --name solver_service -d -p 80:5000 solver_service
+
+#To Stop solver_service
+docker stop solver_service
+
+#To Delete container
+docker rm solver_service
+
+#To Delete Image
+docker rmi solver_service
+###################
+
+#######################
+#From repository
+docker build -t tpilvelis/solver_service:v0.0.1 .
+docker run --name solver_service -d -p 80:5000 tpilvelis/solver_service:v0.0.1
+docker stop solver_service
+docker rm solver_service
+docker rmi tpilvelis/solver_service:v0.0.1
+#######################
+
+#######
+#Do Load balancing
+docker swarm init
+#Runs docker compose 
+docker stack deploy -c docker-compose.yml solver_service
+#Will Display all container instances of image
+docker service ls
+#Will show all 5 instances
+docker service ps solver_service_web
+
+#Can scale without tearing down containers 
+#just have to change the values and save and run the compose
+docker stack deploy -c docker-compose.yml solver_service
+
+#Take down 
+docker stack rm solver_service
+
+docker swarm leave --force
+
+
+
+
+
+
+#To View Running Containers
+docker ps
+
+#to view images
+docker images
+
+#Push to repo
+docker push tpilvelis/solver_service:v0.0.1
+
+#Pull from repo
+docker pull tpilvelis/solver_service
