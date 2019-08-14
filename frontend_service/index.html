@@ -9,39 +9,43 @@
     </head>
 
     <body>
-
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-">
-                            <!--Side Content-->
-                        </div>
-                        <div class="col-sm">
-                            <h1>Sudoku Soler</h1>
-                            <div class="card text-center">
-                                <div class="card-header">
-                                    Puzzle Hash Code:
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Special title treatment</h5>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                        
-                                    <canvas id="sudokuTable" width="490" height="490" style="border:1px solid #d3d3d3;">
-                                            Your browser does not support the HTML5 canvas tag.</canvas>
-                                        
-                                        
-                                </div>
-                                <div class="card-footer text-muted">
-                                    <a href="#" class="btn btn-primary">Solve</a>
+        <div class="container">
+            <div class="row">
+                <div class="col-">
+                    <!--Side Content-->
+                </div>
+                <div class="col-sm">
+                    <h1>Sudoku Solver</h1>
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        Puzzle Hash Code md5:
+                                    </div>
+                                    <div class="col">
+                                        9dfb4b6ca3a777434459b73f488455ff
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-">
-                            <!--Side Content-->
+                        <div class="card-body">
+                            <h5 class="card-title">Special title treatment</h5>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <canvas id="sudokuTable" width="490" height="490" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <a href="#" class="btn btn-success">Solve</a>
+                            <a href="#" class="btn btn-primary">Generate</a>
+                            <a href="#" class="btn btn-danger">Validate</a>
                         </div>
                     </div>
                 </div>
-
+                <div class="col-">
+                    <!--Side Content-->
+                </div>
+            </div>
+        </div>
     </body>
 
     <script>
@@ -57,15 +61,16 @@
             var c = document.getElementById("sudokuTable");
             var ctx = c.getContext("2d");
             ctx.font = 'bold 48px serif';
-            var startX, startY = 20;
+            var startX = 20;
+            var startY = 20;
             var num = 0;
 
             load_sudoku_board();
 
-            startX, startY = 20;
+            var startX = 20;
+            var startY = 20;
 
-            load_sudoku_values();
-
+            load_sudoku_values(sudoku_values);
 
             function load_sudoku_board()
             {
@@ -83,30 +88,23 @@
                 ctx.stroke();
             }
 
-            function load_sudoku_values()
+            function load_sudoku_values(values_array)
             {
                 for (var i = 0; i < 9; i++)
                 {
-                    ctx.strokeText( sudoku_values[num] , startX+10 ,startY - 10 + 50)
+                    ctx.strokeText( values_array[num] , startX+10 ,startY - 10 + 50)
                     num = num + 1
-
                     for (var j = 0; j < 8; j++)
                     {
                         startX = startX + 50
-                        ctx.strokeText( sudoku_values[num] , startX+10 ,startY - 10 + 50)
-                        
+                        ctx.strokeText( values_array[num] , startX+10 ,startY - 10 + 50)     
                         num = num + 1
-
-                        //ctx.addHitRegion()
                     }
                     startX = 20
                     startY = startY + 50
-
                 }
-                
                 ctx.stroke();
             }
 
-            </script> 
-
+    </script> 
 </html>
