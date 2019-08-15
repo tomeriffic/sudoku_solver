@@ -17,7 +17,7 @@ class PossibilityExtractor:
     (0, [4,6,8,9]),
     (1, [1,2,3,4,9])
     """
-    def __init__(self, sudoku_puzzle:SudokuBoard):
+    def __init__(self, sudoku_puzzle):
         list_of_possibilities = []
         puzzle_size = len(sudoku_puzzle.sudoku_array)
         i = 0
@@ -104,7 +104,7 @@ class PossibilityExtractor:
             if count == 1:
                 self.possibilities[i[0]] = (i[1], [highest_priority])
 
-    def get_row(self, index) -> list:
+    def get_row(self, index):
         if ( index % self.squared_len == 0):
             row = [self.puzzle.sudoku_array[i] for i in range(index , index + self.squared_len)]
             return row
@@ -113,7 +113,7 @@ class PossibilityExtractor:
             mod_result = index % self.squared_len
             return self.get_row(index - mod_result)
             
-    def get_column(self, index) -> list:
+    def get_column(self, index):
         col_index = index % 9
         col = [ self.puzzle.sudoku_array[i] for i in range(col_index, self.puzzle_array_len, self.squared_len) ]
         return col
@@ -255,7 +255,7 @@ class PossibilityExtractor:
         }
         return nov_map
 
-    def values_at_index(self, list_of_indexes : list):
+    def values_at_index(self, list_of_indexes):
         values_in_nov = []
         for index in list_of_indexes:
             value = self.puzzle.sudoku_array[index]
@@ -346,7 +346,7 @@ class TestPossibilityExtractor:
             return overall_status
 
             
-def print_sudoku(sudoku:list):
+def print_sudoku(sudoku):
     i = 0
     token = ""
     size = len(sudoku)
@@ -360,7 +360,7 @@ def print_sudoku(sudoku:list):
         if i == 0:
             token = ""
 
-        print(str(sudoku[i]) + ",", end=token)
+        #print(str(sudoku[i]) + ",", end=token)
         i = i + 1
         token = ""
         sudoku.pop(0)
