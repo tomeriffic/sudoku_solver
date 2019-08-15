@@ -346,7 +346,7 @@ class TestPossibilityExtractor:
             return overall_status
 
             
-def print_sudoku(sudoku):
+def print_sudoku(sudoku:list):
     i = 0
     token = ""
     size = len(sudoku)
