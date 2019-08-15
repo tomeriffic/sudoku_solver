@@ -1,6 +1,8 @@
 import solver
 import pytest
 
+DO_NOT_TEST = 0
+
 sudoku_values = [0,0,7,0,0,0,0,0,5, \
                     0,0,0,0,0,2,0,8,3, \
                     0,0,0,7,6,0,2,1,0, \
@@ -95,21 +97,23 @@ def test_get_column_bad_index_2():
     result = p.get_column(index)
     assert result == []
 
-def test_get_used_values_in_row_1():
-    iLower = 0
-    iUpper = 8
-    s = solver.SudokuBoard(sudoku_values)
-    p = solver.PossibilityExtractor(s)
-    result = p.get_used_values_in_row(iLower, iUpper)
-    assert result == [7,5]
+if DO_NOT_TEST:
+    def test_get_used_values_in_row_1():
+        iLower = 0
+        iUpper = 8
+        s = solver.SudokuBoard(sudoku_values)
+        p = solver.PossibilityExtractor(s)
+        result = p.get_used_values_in_row(iLower, iUpper)
+        assert result == [7,5]
 
-def test_get_used_values_in_row_2():
-    iLower = 9
-    iUpper = 17
-    s = solver.SudokuBoard(sudoku_values)
-    p = solver.PossibilityExtractor(s)
-    result = p.get_used_values_in_row(iLower, iUpper)
-    assert result == [2,8,3]
+if DO_NOT_TEST:
+    def test_get_used_values_in_row_2():
+        iLower = 9
+        iUpper = 17
+        s = solver.SudokuBoard(sudoku_values)
+        p = solver.PossibilityExtractor(s)
+        result = p.get_used_values_in_row(iLower, iUpper)
+        assert result == [2,8,3]
 
 def test_get_used_values_in_row_3():
     iLower = 72
@@ -119,13 +123,14 @@ def test_get_used_values_in_row_3():
     result = p.get_used_values_in_row(iLower, iUpper)
     assert result == [1,6]
 
-def test_get_used_values_in_row_4():
-    iLower = 27
-    iUpper = 35
-    s = solver.SudokuBoard(sudoku_values)
-    p = solver.PossibilityExtractor(s)
-    result = p.get_used_values_in_row(iLower, iUpper)
-    assert result == [6,4,9,2,1]
+if DO_NOT_TEST:
+    def test_get_used_values_in_row_4():
+        iLower = 27
+        iUpper = 35
+        s = solver.SudokuBoard(sudoku_values)
+        p = solver.PossibilityExtractor(s)
+        result = p.get_used_values_in_row(iLower, iUpper)
+        assert result == [6,4,9,2,1]
 
 def test_get_used_values_in_row_bad_index_1():
     iLower = -1
@@ -158,19 +163,21 @@ def test_get_used_values_in_column_1():
     result = p.get_used_values_in_column(0)
     assert result == [2,3,1]
 
-def test_get_used_values_in_column_2():
-    index = 1
-    s = solver.SudokuBoard(sudoku_values)
-    p = solver.PossibilityExtractor(s)
-    result = p.get_used_values_in_column(0)
-    assert result == [6,5,8,7]
+if DO_NOT_TEST:
+    def test_get_used_values_in_column_2():
+        index = 1
+        s = solver.SudokuBoard(sudoku_values)
+        p = solver.PossibilityExtractor(s)
+        result = p.get_used_values_in_column(0)
+        assert result == [6,5,8,7]
 
-def test_get_used_values_in_column_3():
-    index = 8
-    s = solver.SudokuBoard(sudoku_values)
-    p = solver.PossibilityExtractor(s)
-    result = p.get_used_values_in_column(0)
-    assert result == [5,3,1]
+if DO_NOT_TEST:
+    def test_get_used_values_in_column_3():
+        index = 8
+        s = solver.SudokuBoard(sudoku_values)
+        p = solver.PossibilityExtractor(s)
+        result = p.get_used_values_in_column(0)
+        assert result == [5,3,1]
 
 def test_values_at_index_1():
     indexes = [2]
