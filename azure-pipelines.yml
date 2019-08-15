@@ -29,7 +29,8 @@ steps:
   inputs:
     repository: 'tpilvelis/solver_service'
     command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
+    Dockerfile: '**/solver_service/Dockerfile'
+
 
 - script: |
     python -m pip install --upgrade pip
