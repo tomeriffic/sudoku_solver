@@ -42,9 +42,9 @@ class PossibilityExtractor:
         self.extract_possible_from_novemant()
         self.extract_possible_brute_force()
 
-    #-------------------------------------------------------
-    #BRUTE FORCE PROCESSING
-    #-------------------------------------------------------
+        #-------------------------------------------------------
+        #BRUTE FORCE PROCESSING
+        #-------------------------------------------------------
     def retrieve_priority_index(self):
         largest_val = 0
         index = 0
@@ -122,10 +122,14 @@ class PossibilityExtractor:
         col = [ self.puzzle.sudoku_array[i] for i in range(col_index, self.puzzle_array_len, self.squared_len) ]
         return col
 
-    #-------------------------------------------------------
-    #ROW PROCESSING
-    #-------------------------------------------------------
+        #-------------------------------------------------------
+        #ROW PROCESSING
+        #-------------------------------------------------------
     def get_used_values_in_row(self, lower, upper):
+        if lower > 80 or lower < 0:
+            return  []
+        if upper > 80 or upper < 0:
+            return []
         list_of_existing_values_in_puzzle = []
         i = lower
         while i < upper:
@@ -155,9 +159,10 @@ class PossibilityExtractor:
             self.process_row(range_lower, range_upper)
             i = range_upper
 
-    #-------------------------------------------------------
-    #COLUMN PROCESSING
-    #-------------------------------------------------------
+        #-------------------------------------------------------
+        #COLUMN PROCESSING
+        #-------------------------------------------------------
+    
     def get_used_values_in_column(self, column_start_val):
         list_of_used_values = []
         i = column_start_val
@@ -186,9 +191,10 @@ class PossibilityExtractor:
             self.process_column(column_start_val)
             column_start_val = column_start_val + 1
 
-    #-------------------------------------------------------
-    #NOVEMANT PROCESSING
-    #-------------------------------------------------------
+        #-------------------------------------------------------
+        #NOVEMANT PROCESSING
+        #-------------------------------------------------------
+    
     def extract_possible_from_novemant(self):
         i = 0
         nov_pos_map = self.novemant_map()
@@ -267,9 +273,9 @@ class PossibilityExtractor:
                 values_in_nov.append(value)
         return values_in_nov
 
-    #-------------------------------------------------------
-    #PRINT DATA
-    #-------------------------------------------------------
+        #-------------------------------------------------------
+        #PRINT DATA
+        #-------------------------------------------------------
     def print_definate_values(self):
         i = 0
         for pissabolity in self.possibilities:
@@ -286,9 +292,9 @@ class PossibilityExtractor:
             #print("Location: " + index + " Value: " + str(x[0]) + " Possibilities: " + str(x[1]))
         return x[1]
         
-    #-------------------------------------------------------
-    #UPDATE SUDOKU
-    #-------------------------------------------------------
+        #-------------------------------------------------------
+        #UPDATE SUDOKU
+        #-------------------------------------------------------
     def update_sudoku(self):
         i = 0
         for poss in self.possibilities:
