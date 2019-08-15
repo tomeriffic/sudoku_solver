@@ -105,6 +105,8 @@ class PossibilityExtractor:
                 self.possibilities[i[0]] = (i[1], [highest_priority])
 
     def get_row(self, index):
+        if index > 80 or index < 0:
+            return []
         if ( index % self.squared_len == 0):
             row = [self.puzzle.sudoku_array[i] for i in range(index , index + self.squared_len)]
             return row
@@ -114,6 +116,8 @@ class PossibilityExtractor:
             return self.get_row(index - mod_result)
             
     def get_column(self, index):
+        if index > 80 or index < 0:
+            return []
         col_index = index % 9
         col = [ self.puzzle.sudoku_array[i] for i in range(col_index, self.puzzle_array_len, self.squared_len) ]
         return col
@@ -346,7 +350,7 @@ class TestPossibilityExtractor:
             return overall_status
 
             
-def print_sudoku(sudoku:list):
+def print_sudoku(sudoku):
     i = 0
     token = ""
     size = len(sudoku)

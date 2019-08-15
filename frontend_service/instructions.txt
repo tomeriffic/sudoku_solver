@@ -1,2 +1,0 @@
-docker image build -t static-webserver .
-docker run static-webserver -d -p 80:5000 static-webserver
