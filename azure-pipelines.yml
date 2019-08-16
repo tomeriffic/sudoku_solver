@@ -20,11 +20,13 @@ strategy:
     Python37:
       python.version: '3.7'
 
-steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '$(python.version)'
-  displayName: 'Use Python $(python.version)'
+jobs:
+- job: A
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '$(python.version)'
+    displayName: 'Use Python $(python.version)'
 
 - task: Docker@2
   inputs:
@@ -42,11 +44,3 @@ steps:
     pytest
   displayName: 'pytest'
 
-jobs:
-- job: A
-  steps:
-  - bash: echo "A"
-
-- job: B
-  steps:
-  - bash: echo "B"
