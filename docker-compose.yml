@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+
+  web:
+    container_name: web-server
+    image: tpilvelis/web-server:v0.0.1
+    ports:
+      - "80:80"
+    networks:
+      - webnet
+
+  solver_service:
+    container_name: solver_service
+    image: tpilvelis/solver_service:v0.0.1
+    ports:
+      - "80:5000"
+#    networks:
+#      - webnet
+
+networks:
+  webnet:

@@ -1,8 +1,8 @@
 FROM python:3-alpine
 
-COPY . /solver_service
+COPY . /solver-service
 
-WORKDIR /solver_service
+WORKDIR /solver-service
 
 RUN pip install -r requirements.txt
 
