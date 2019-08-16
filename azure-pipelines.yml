@@ -42,4 +42,4 @@ steps:
 - task: Docker@2
   inputs:
     command: 'buildAndPush'
-    Dockerfile: 'web-server/Dockerfile'
+    Dockerfile: 'frontend-service/Dockerfile'
