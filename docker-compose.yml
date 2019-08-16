@@ -26,5 +26,21 @@ services:
     networks:
       - webnet
 
+  generate_service:
+    container_name: generate-service
+    image: tpilvelis/generate-service:v0.0.1
+    ports:
+      - "5002:5002"
+    networks:
+      - webnet
+
+#  bot_service:
+#    container_name: bot-service
+#    image: tpilvelis/bot-service:v0.0.1
+#    ports:
+#      - "5002:5002"
+#    networks:
+#      - webnet
+
 networks:
   webnet:

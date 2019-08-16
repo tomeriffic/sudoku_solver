@@ -67,8 +67,6 @@
 
             load_sudoku_board();
 
-            draw_bold_lines();
-            
             var startX = 20;
             var startY = 20;
 
@@ -89,15 +87,6 @@
                 }
                 ctx.stroke();
             }
-
-            function draw_bold_lines()
-            {
-                ctx.beginPath();       // Start a new path
-                ctx.moveTo(30, 50);    // Move the pen to (30, 50)
-                ctx.lineTo(170, 470);
-            }
-
-
 
             function load_sudoku_values(values_array)
             {
