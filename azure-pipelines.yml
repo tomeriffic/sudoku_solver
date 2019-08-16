@@ -34,12 +34,14 @@ steps:
     pip install pytest pytest-azurepipelines
     pytest
   displayName: 'pytest'
-- task: Solver Service Docker@2
+- task: Docker@2
   inputs:
     command: 'buildAndPush'
     Dockerfile: 'solver-service/Dockerfile'
+  displayName: 'Solver Service Build and Push'
   
-- task: Frontend Service Docker@2
+- task: Docker@2
   inputs:
     command: 'buildAndPush'
     Dockerfile: 'frontend-service/Dockerfile'
+  displayName: 'Frontend Service Build and Push'
