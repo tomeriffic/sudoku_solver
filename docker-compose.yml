@@ -11,12 +11,12 @@ services:
       - webnet
 
   solver_service:
-    container_name: solver_service
-    image: tpilvelis/solver_service:v0.0.1
+    container_name: solver-service
+    image: tpilvelis/solver-service:v0.0.1
     ports:
-      - "80:5000"
-#    networks:
-#      - webnet
+      - "5000:5000"
+    networks:
+      - webnet
 
 networks:
   webnet:

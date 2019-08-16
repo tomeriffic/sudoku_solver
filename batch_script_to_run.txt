@@ -24,11 +24,11 @@ docker rmi solver_service
 
 #######################
 #From repository To Run Solver Service
-docker build -t tpilvelis/solver_service:v0.0.1 .
-docker run --name solver_service -d -p 80:5000 tpilvelis/solver_service:v0.0.1
-docker stop solver_service
-docker rm solver_service
-docker rmi tpilvelis/solver_service:v0.0.1
+docker build -t tpilvelis/solver-service:v0.0.1 .
+docker run --name solver-service -d -p 80:5000 tpilvelis/solver-service:v0.0.1
+docker stop solver-service
+docker rm solver-service
+docker rmi tpilvelis/solver-service:v0.0.1
 #######################
 #######################
 #From repository To Run Web Server
