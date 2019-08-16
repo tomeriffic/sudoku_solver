@@ -1,4 +1,5 @@
 # Python package
+
 # Create and test a Python package on multiple Python versions.
 # Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
@@ -30,6 +31,20 @@ steps:
     repository: 'tpilvelis/solver_service'
     command: 'buildAndPush'
     Dockerfile: '**/solver_service/Dockerfile'
+
+- task: InvokeRESTAPI@1
+  inputs:
+    connectionType: 'connectedServiceName'
+    method: 'POST'
+    headers: |
+      {
+      "Content-Type":"application/json", 
+      }
+    body: |
+      {
+      	"sudoku" : [0,0,7,0,0,0,0,0,5,0,0,0,0,0,2,0,8,3,0,0,0,7,6,0,2,1,0,0,6,4,0,9,0,0,2,1,0,0,1,8,2,3,4,0,0, 2,5,0,0,1,0,8,9,0,0,8,2,0,7,1,0,0,0, 3,7,0,2,0,0,0,0,0,1,0,0,0,0,0,6,0,0 ] 
+      }
+    waitForCompletion: 'false'
 
 - script: |
     python -m pip install --upgrade pip
