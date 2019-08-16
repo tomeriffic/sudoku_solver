@@ -4,7 +4,7 @@ COPY . /solver-service
 
 WORKDIR /solver-service
 
-RUN pip install -r ../requirements.txt
+RUN pip install -r requirements.txt
 
 CMD ["python", "solver.py"]
 

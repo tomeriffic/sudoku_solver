@@ -18,5 +18,13 @@ services:
     networks:
       - webnet
 
+  validator_service:
+    container_name: validator-service
+    image: tpilvelis/validator-service:v0.0.1
+    ports:
+      - "5001:5001"
+    networks:
+      - webnet
+
 networks:
   webnet:

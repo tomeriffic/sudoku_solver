@@ -12,7 +12,7 @@ def main():
     return True
 
 
-@app.route('/sudoku_solve', methods=["POST"])
+@app.route('/validate', methods=["POST"])
 def validate_api():
     main()
 

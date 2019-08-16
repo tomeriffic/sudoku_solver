@@ -355,7 +355,7 @@ class TestPossibilityExtractor:
             overall_status = False
             return overall_status
 
-            
+"""           
 def print_sudoku(sudoku):
     i = 0
     token = ""
@@ -374,7 +374,7 @@ def print_sudoku(sudoku):
         i = i + 1
         token = ""
         sudoku.pop(0)
-
+"""
 def sudoku_solve_iteration(sudoku_values):
     s = SudokuBoard(sudoku_values)
     p = PossibilityExtractor(s)

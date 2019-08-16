@@ -17,23 +17,6 @@ docker rm solver_service
 docker rmi solver_service
 ###################
 
-#######################
-#From repository To Run Solver Service
-docker build -t tpilvelis/solver-service:v0.0.1 .
-docker run --name solver-service -d -p 80:5000 tpilvelis/solver-service:v0.0.1
-docker stop solver-service
-docker rm solver-service
-docker rmi tpilvelis/solver-service:v0.0.1
-#######################
-#######################
-#From repository To Run Web Server
-docker build -t tpilvelis/web-server:v0.0.1 .
-docker run --name web-service -d -p 80:80 tpilvelis/web-server:v0.0.1
-docker stop web-service
-docker rm web-server
-docker rmi tpilvelis/web-server:v0.0.1
-#######################
-
 #######
 #Do Load balancing
 docker swarm init
@@ -69,3 +52,28 @@ docker push tpilvelis/solver_service:v0.0.1
 
 #Pull from repo
 docker pull tpilvelis/solver_service
+
+#######################
+#From repository To Run Web Server
+docker build -t tpilvelis/web-server:v0.0.1 .
+docker run --name web-service -d -p 80:80 tpilvelis/web-server:v0.0.1
+docker stop web-service
+docker rm web-server
+docker rmi tpilvelis/web-server:v0.0.1
+#######################
+#######################
+#From repository To Run Solver Service
+docker build -t tpilvelis/solver-service:v0.0.1 .
+docker run --name solver-service -d -p 80:5000 tpilvelis/solver-service:v0.0.1
+docker stop solver-service
+docker rm solver-service
+docker rmi tpilvelis/solver-service:v0.0.1
+#######################
+#######################
+#From repository To Run Validator Service
+docker build -t tpilvelis/validator-service:v0.0.1 .
+docker run --name validator-service -d -p 80:5000 tpilvelis/validator-service:v0.0.1
+docker stop validator-service
+docker rm validator-service
+docker rmi tpilvelis/validator-service:v0.0.1
+#######################
